@@ -10,7 +10,7 @@ public class FinishStack : MonoBehaviour
         if (other.GetComponent<CharacterController>())
         {
             EventSystem.TriggerEvent("OnLevelFinish", isSuccess);
-            Debug.Log("Oyunun sonuna geldin evlat! "+ isSuccess);
+            Debug.Log("Game over! Status: " + isSuccess);
         }
     }
 }

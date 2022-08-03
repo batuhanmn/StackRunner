@@ -19,13 +19,13 @@ public class CharacterController : MonoBehaviour
     }
     private void OnEnable()
     {
-        EventSystem.StartListening("StackPlaced", "MoveStart", Run);
-        EventSystem.StartListening("OnLevelFinish", "CharacterControllerLevelFinish", Dance);
+        EventSystem.StartListening("StackPlaced", "CharacterController", Run);
+        EventSystem.StartListening("OnLevelFinish", "CharacterController", Dance);
     }
     private void OnDisable()
     {
-        EventSystem.StopListening("StackPlaced", "MoveStart");
-        EventSystem.StopListening("OnLevelFinish", "CharacterControllerLevelFinish");
+        EventSystem.StopListening("StackPlaced", "CharacterController");
+        EventSystem.StopListening("OnLevelFinish", "CharacterController");
     }
     private void Run(object[] obj)
     {
@@ -33,6 +33,11 @@ public class CharacterController : MonoBehaviour
     }
     private void Dance(object[] obj)
     {
+        if (!(bool)obj[0])
+        {
+            characterState = CharacterState.Idle;
+            return;
+        };
         characterState = CharacterState.Dance;
         gameObject.GetComponentInChildren<Animator>().SetBool("isDancing", true);
     }

@@ -120,7 +120,7 @@ public class Stack : MonoBehaviour
     {
         StackController.Instance.FinalWidth = transform.localScale.x;
         transform.position = new Vector3(StackController.Instance.oldStack.transform.position.x, transform.position.y, transform.position.z);
-        Debug.Log("tam tam");
+        Debug.Log("perfect match");
         SoundManager.Instance.PlaySound(SoundManager.Sound.Classic);
     }
 
